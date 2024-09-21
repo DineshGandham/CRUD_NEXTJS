@@ -1,6 +1,6 @@
 "use client" //mentioned because use the component as client side
 import React, { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface FormState {
     name : string;
@@ -23,7 +23,7 @@ export default function ItemForm() {
   const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try{
-        const res = await fetch('',{
+        const res = await fetch('/api/ite',{
             method: 'POST',
             headers : {
                 'content-Type' : 'application/json'
