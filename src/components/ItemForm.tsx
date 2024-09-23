@@ -23,7 +23,7 @@ export default function ItemForm() {
   const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try{
-        const res = await fetch('/api/ite',{
+        const res = await fetch('/api/items',{
             method: 'POST',
             headers : {
                 'content-Type' : 'application/json'

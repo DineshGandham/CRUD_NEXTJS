@@ -10,3 +10,28 @@ export async function POST(req : NextRequest){
 
     return NextResponse.json(newItem);
 }
+
+export async function GET(){
+    await dbConnect();
+    const items = await Item.find({});
+
+    return NextResponse.json(items)
+}
+
+export async function DELETE(req : NextRequest){
+    await dbConnect();
+    const {id} = await req.json();
+    const item = await Item.findByIdAndDelete(id);
+
+    console.log(item)
+    return NextResponse.json({ message: 'Item deleted' });
+}
+
+export async function PUT(req: NextRequest) {
+    await dbConnect();
+  
+    const { id, name, description } = await req.json();
+    const updatedItem = await Item.findByIdAndUpdate(id, { name, description }, { new: true });
+  
+    return NextResponse.json(updatedItem);
+  }

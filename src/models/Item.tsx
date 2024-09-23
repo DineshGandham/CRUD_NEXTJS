@@ -1,6 +1,10 @@
 import mongoose ,{Schema, model, models} from "mongoose";
 
 const itemSchema = new Schema({
+    _id:{
+        type:String,
+        required:true
+    },
     name:{
         type:String,
         required : true,
